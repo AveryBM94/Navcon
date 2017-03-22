@@ -25,6 +25,25 @@
 		9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF241E4A33F1002D55B8 /* ProductVC.m */; };
 		9E62FF271E4A33F1002D55B8 /* ProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF251E4A33F1002D55B8 /* ProductVC.xib */; };
 		9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */; };
+		F96B36601E65FC1000B2CCDE /* navConApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */; };
+		F96B36621E65FCCD00B2CCDE /* navConSamsung.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36611E65FCCD00B2CCDE /* navConSamsung.png */; };
+		F96B36641E65FECA00B2CCDE /* navConMotorola.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36631E65FECA00B2CCDE /* navConMotorola.png */; };
+		F96B36681E65FFD400B2CCDE /* navConBlackBerry.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B36671E65FFD400B2CCDE /* navConBlackBerry.jpeg */; };
+		F96B366A1E660BDD00B2CCDE /* MotoZForceDroid.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B36691E660BDD00B2CCDE /* MotoZForceDroid.jpeg */; };
+		F96B366C1E660BE800B2CCDE /* MotoZPlay.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B366B1E660BE800B2CCDE /* MotoZPlay.jpeg */; };
+		F96B366E1E660BF800B2CCDE /* MotoG4Plus.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B366D1E660BF800B2CCDE /* MotoG4Plus.jpeg */; };
+		F96B36701E660C6100B2CCDE /* leap.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B366F1E660C6100B2CCDE /* leap.jpeg */; };
+		F96B36721E660C7500B2CCDE /* passport.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B36711E660C7500B2CCDE /* passport.jpeg */; };
+		F96B36741E660C8B00B2CCDE /* priv.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B36731E660C8B00B2CCDE /* priv.jpeg */; };
+		F96B36761E660C9A00B2CCDE /* iPodTouch.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36751E660C9A00B2CCDE /* iPodTouch.png */; };
+		F96B36781E660CA500B2CCDE /* iPadPro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B36771E660CA500B2CCDE /* iPadPro.jpeg */; };
+		F96B367A1E660CAC00B2CCDE /* iPhone.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B36791E660CAC00B2CCDE /* iPhone.jpeg */; };
+		F96B367C1E660CC200B2CCDE /* GalaxyNote7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B367B1E660CC200B2CCDE /* GalaxyNote7.jpeg */; };
+		F96B367E1E660CD400B2CCDE /* GalaxyS7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B367D1E660CD400B2CCDE /* GalaxyS7.jpeg */; };
+		F96B36801E67519800B2CCDE /* GalaxyTab.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B367F1E67519800B2CCDE /* GalaxyTab.jpeg */; };
+		F96B36841E675CDC00B2CCDE /* WebViewCon.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B36821E675CDC00B2CCDE /* WebViewCon.m */; };
+		F96B36851E675CDC00B2CCDE /* WebViewCon.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96B36831E675CDC00B2CCDE /* WebViewCon.xib */; };
+		F994565D1E79A237006E74A6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F994565C1E79A237006E74A6 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +81,26 @@
 		9E62FF241E4A33F1002D55B8 /* ProductVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductVC.m; sourceTree = "<group>"; };
 		9E62FF251E4A33F1002D55B8 /* ProductVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductVC.xib; sourceTree = "<group>"; };
 		9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = navConApple.jpeg; sourceTree = "<group>"; };
+		F96B36611E65FCCD00B2CCDE /* navConSamsung.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navConSamsung.png; sourceTree = "<group>"; };
+		F96B36631E65FECA00B2CCDE /* navConMotorola.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navConMotorola.png; sourceTree = "<group>"; };
+		F96B36671E65FFD400B2CCDE /* navConBlackBerry.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = navConBlackBerry.jpeg; sourceTree = "<group>"; };
+		F96B36691E660BDD00B2CCDE /* MotoZForceDroid.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MotoZForceDroid.jpeg; sourceTree = "<group>"; };
+		F96B366B1E660BE800B2CCDE /* MotoZPlay.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MotoZPlay.jpeg; sourceTree = "<group>"; };
+		F96B366D1E660BF800B2CCDE /* MotoG4Plus.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MotoG4Plus.jpeg; sourceTree = "<group>"; };
+		F96B366F1E660C6100B2CCDE /* leap.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leap.jpeg; sourceTree = "<group>"; };
+		F96B36711E660C7500B2CCDE /* passport.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = passport.jpeg; sourceTree = "<group>"; };
+		F96B36731E660C8B00B2CCDE /* priv.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = priv.jpeg; sourceTree = "<group>"; };
+		F96B36751E660C9A00B2CCDE /* iPodTouch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPodTouch.png; sourceTree = "<group>"; };
+		F96B36771E660CA500B2CCDE /* iPadPro.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPadPro.jpeg; sourceTree = "<group>"; };
+		F96B36791E660CAC00B2CCDE /* iPhone.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone.jpeg; sourceTree = "<group>"; };
+		F96B367B1E660CC200B2CCDE /* GalaxyNote7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyNote7.jpeg; sourceTree = "<group>"; };
+		F96B367D1E660CD400B2CCDE /* GalaxyS7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyS7.jpeg; sourceTree = "<group>"; };
+		F96B367F1E67519800B2CCDE /* GalaxyTab.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GalaxyTab.jpeg; sourceTree = "<group>"; };
+		F96B36811E675CDC00B2CCDE /* WebViewCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewCon.h; sourceTree = "<group>"; };
+		F96B36821E675CDC00B2CCDE /* WebViewCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewCon.m; sourceTree = "<group>"; };
+		F96B36831E675CDC00B2CCDE /* WebViewCon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewCon.xib; sourceTree = "<group>"; };
+		F994565C1E79A237006E74A6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F994565D1E79A237006E74A6 /* WebKit.framework in Frameworks */,
 				48A656B718163BF200746D36 /* CoreGraphics.framework in Frameworks */,
 				48A656B918163BF200746D36 /* UIKit.framework in Frameworks */,
 				48A656B518163BF200746D36 /* Foundation.framework in Frameworks */,
@@ -113,6 +153,9 @@
 				9E62FF231E4A33F1002D55B8 /* ProductVC.h */,
 				9E62FF241E4A33F1002D55B8 /* ProductVC.m */,
 				9E62FF251E4A33F1002D55B8 /* ProductVC.xib */,
+				F96B36811E675CDC00B2CCDE /* WebViewCon.h */,
+				F96B36821E675CDC00B2CCDE /* WebViewCon.m */,
+				F96B36831E675CDC00B2CCDE /* WebViewCon.xib */,
 			);
 			name = ProductViewController;
 			sourceTree = "<group>";
@@ -139,6 +182,7 @@
 		48A656B318163BF200746D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F994565C1E79A237006E74A6 /* WebKit.framework */,
 				48A656B418163BF200746D36 /* Foundation.framework */,
 				48A656B618163BF200746D36 /* CoreGraphics.framework */,
 				48A656B818163BF200746D36 /* UIKit.framework */,
@@ -162,6 +206,22 @@
 		48A656BB18163BF200746D36 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */,
+				F96B36751E660C9A00B2CCDE /* iPodTouch.png */,
+				F96B36791E660CAC00B2CCDE /* iPhone.jpeg */,
+				F96B36771E660CA500B2CCDE /* iPadPro.jpeg */,
+				F96B36611E65FCCD00B2CCDE /* navConSamsung.png */,
+				F96B367B1E660CC200B2CCDE /* GalaxyNote7.jpeg */,
+				F96B367D1E660CD400B2CCDE /* GalaxyS7.jpeg */,
+				F96B367F1E67519800B2CCDE /* GalaxyTab.jpeg */,
+				F96B36671E65FFD400B2CCDE /* navConBlackBerry.jpeg */,
+				F96B366F1E660C6100B2CCDE /* leap.jpeg */,
+				F96B36711E660C7500B2CCDE /* passport.jpeg */,
+				F96B36731E660C8B00B2CCDE /* priv.jpeg */,
+				F96B36631E65FECA00B2CCDE /* navConMotorola.png */,
+				F96B36691E660BDD00B2CCDE /* MotoZForceDroid.jpeg */,
+				F96B366D1E660BF800B2CCDE /* MotoG4Plus.jpeg */,
+				F96B366B1E660BE800B2CCDE /* MotoZPlay.jpeg */,
 				48A656BC18163BF200746D36 /* NavCtrl-Info.plist */,
 				48A656BD18163BF200746D36 /* InfoPlist.strings */,
 				48A656ED1816468000746D36 /* Sunflower.gif */,
@@ -266,12 +326,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96B36851E675CDC00B2CCDE /* WebViewCon.xib in Resources */,
 				9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */,
+				F96B36641E65FECA00B2CCDE /* navConMotorola.png in Resources */,
+				F96B366A1E660BDD00B2CCDE /* MotoZForceDroid.jpeg in Resources */,
+				F96B36801E67519800B2CCDE /* GalaxyTab.jpeg in Resources */,
 				48A656EE1816468000746D36 /* Sunflower.gif in Resources */,
 				9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */,
+				F96B366E1E660BF800B2CCDE /* MotoG4Plus.jpeg in Resources */,
+				F96B367A1E660CAC00B2CCDE /* iPhone.jpeg in Resources */,
+				F96B36601E65FC1000B2CCDE /* navConApple.jpeg in Resources */,
+				F96B36681E65FFD400B2CCDE /* navConBlackBerry.jpeg in Resources */,
 				9E62FF271E4A33F1002D55B8 /* ProductVC.xib in Resources */,
 				48A656BF18163BF200746D36 /* InfoPlist.strings in Resources */,
+				F96B366C1E660BE800B2CCDE /* MotoZPlay.jpeg in Resources */,
+				F96B36721E660C7500B2CCDE /* passport.jpeg in Resources */,
+				F96B36701E660C6100B2CCDE /* leap.jpeg in Resources */,
 				48A656C718163BF200746D36 /* Images.xcassets in Resources */,
+				F96B367C1E660CC200B2CCDE /* GalaxyNote7.jpeg in Resources */,
+				F96B36741E660C8B00B2CCDE /* priv.jpeg in Resources */,
+				F96B36761E660C9A00B2CCDE /* iPodTouch.png in Resources */,
+				F96B367E1E660CD400B2CCDE /* GalaxyS7.jpeg in Resources */,
+				F96B36621E65FCCD00B2CCDE /* navConSamsung.png in Resources */,
+				F96B36781E660CA500B2CCDE /* iPadPro.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +369,7 @@
 			files = (
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
+				F96B36841E675CDC00B2CCDE /* WebViewCon.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,
 			);
