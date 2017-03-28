@@ -90,8 +90,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete){
-        [_products removeObjectAtIndex:indexPath.row];
-        [_productPhotos removeObjectAtIndex:indexPath.row];
+        [self.currentCompany.products removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
@@ -102,7 +101,7 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.products count];
+    return self.currentCompany.products.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,10 +130,14 @@
 //         cell.imageView.image = image1;
 //         
 //     }
-    UIImage *currentImage = [UIImage imageNamed:[self.productPhotos objectAtIndex:indexPath.row]];
+    
+    Product *thisProduct = [self.currentCompany.products objectAtIndex:indexPath.row];
+    
+    
+    UIImage *currentImage = [UIImage imageNamed:thisProduct.productPhotos];
     
     cell.imageView.image = currentImage;
-    cell.textLabel.text = [self.products objectAtIndex:[indexPath row]];
+    cell.textLabel.text = thisProduct.productNames;
     return cell;
 }
 
@@ -190,15 +193,19 @@
 
 
  #pragma mark - Table view delegate
- 
+
  // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
  - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  {
  // Navigation logic may go here, for example:
  // Create the next view controller.
      self.webViewControler = [[WebViewCon alloc]init];
-     NSString *productSelected = [self.products objectAtIndex:indexPath.row];
-     if ([productSelected isEqualToString:@"iPad Pro"]) {
+     Product *productSelected = [self.currentCompany.products objectAtIndex:indexPath.row];
+     
+     self.webViewControler.urlToLoad = [NSURL URLWithString:productSelected.urlString];
+     
+     
+     /*if ([productSelected isEqualToString:@"iPad Pro"]) {
          NSURL *url = [NSURL URLWithString:@"http://www.apple.com/ipad/"];
          self.webViewControler.urlToLoad = url;
      } 
@@ -256,7 +263,8 @@
      if ([productSelected isEqualToString:@"Galaxy Tab"]) {
          NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=galaxy+tab&rh=n%3A2335752011%2Ck%3Agalaxy+tab"];
          self.webViewControler.urlToLoad = url;
-     }
+         */
+    // }
 
      
      

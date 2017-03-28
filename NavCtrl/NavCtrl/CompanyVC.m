@@ -7,7 +7,8 @@
 //
 
 #import "CompanyVC.h"
-
+#import "Company.h"
+#import "Product.h"
 @interface CompanyVC ()
 
 @end
@@ -17,26 +18,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    //create ipad
+    //create iphone
+    //create ipod
+    //make a mutable array out of these three PRoduct objects
+    //Product & Company are custom classes
     
+    
+   // self.companies = [[NSMutableArray alloc]initWithObjects:apple, samsung, blackBerry, moto, nil];
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.dao = [DAO sharedManager];
+    
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
     self.navigationItem.rightBarButtonItem = editButton;
+    //line below 
+    self.navigationItem.title = @"Mobile Device Company";
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 
     
     //change these to nsmutable arrays
 //    self.companyList = @[@"Apple mobile devices",@"Samsung mobile devices", @"Black Berry mobile devices", @"Motorola Moto mobile devices"];
-    self.trueCompanyList = [[NSMutableArray alloc]initWithObjects:@"Apple mobile devices",@"Samsung mobile devices", @"Black Berry mobile devices", @"Motorola Moto mobile devices", nil];
-    self.trueImageList = [[NSMutableArray alloc]initWithObjects:@"navConApple.jpeg",@"navConSamsung.png", @"navConBlackBerry.jpeg", @"navConMotorola.png", nil];
-    self.title = @"Mobile device makers";
+    //self.trueCompanyList = [[NSMutableArray alloc]initWithObjects:@"Apple mobile devices",@"Samsung mobile devices", @"Black Berry mobile devices", @"Motorola Moto mobile devices", nil];
+   // self.trueImageList = [[NSMutableArray alloc]initWithObjects:@"navConApple.jpeg",@"navConSamsung.png", @"navConBlackBerry.jpeg", @"navConMotorola.png", nil];
+   // self.title = @"Mobile device makers";
     // Do any additional setup after loading the view from its nib.
     
     
     // Do any additional setup after loading the view from its nib.
     
-        self.appleProds = [[NSMutableArray alloc]initWithObjects: @"iPhone", @"iPod Touch",@"iPad Pro",nil];
+       /* self.appleProds = [[NSMutableArray alloc]initWithObjects: @"iPhone", @"iPod Touch",@"iPad Pro",nil];
         self.appleProdPhotos = [[NSMutableArray alloc]initWithObjects:@"iPodTouch.png", @"iPhone.jpeg", @"iPadPro.jpeg", nil]; //apple product photos
 
         self.blackBerryProds = [[NSMutableArray alloc]initWithObjects:@"Passport", @"Leap", @"Priv",nil];
@@ -46,7 +66,7 @@
         self.motoProdPhotos = [[NSMutableArray alloc]initWithObjects:@"MotoZPlay.jpeg", @"MotoG4Plus.jpeg", @"MotoZForceDroid.jpeg", nil];
 
         self.samsungProds = [[NSMutableArray alloc]initWithObjects: @"Galaxy S7", @"Galaxy Note", @"Galaxy Tab", nil];
-        self.samsungProdPhotos = [[NSMutableArray alloc]initWithObjects:@"GalaxyS7.jpeg", @"GalaxyNote7.jpeg", @"GalaxyTab.jpeg", nil];
+        self.samsungProdPhotos = [[NSMutableArray alloc]initWithObjects:@"GalaxyS7.jpeg", @"GalaxyNote7.jpeg", @"GalaxyTab.jpeg", nil]; */
     
 }
 
@@ -87,7 +107,7 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.trueCompanyList count];
+    return [self.dao.companies count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,11 +118,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if ([[self.trueCompanyList objectAtIndex:indexPath.row] isEqualToString:@"Apple mobile devices"]) {
+    //if ([[self.companies objectAtIndex:indexPath.row] isEqualToString:@"Apple mobile devices"]) {
      
-    }
-    cell.textLabel.text = [self.trueCompanyList objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:[self.trueImageList objectAtIndex:indexPath.row]];
+    //}
+    Company *test =  [self.dao.companies objectAtIndex:indexPath.row];
+    cell.textLabel.text = test.companyName;
+    cell.imageView.image = [UIImage imageNamed:test.logos];
 //    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     return cell;
 }
@@ -122,8 +143,8 @@
  {
  if (editingStyle == UITableViewCellEditingStyleDelete) {
  // Delete the row from the data source
-     [_trueImageList removeObjectAtIndex:indexPath.row];
-     [_trueCompanyList removeObjectAtIndex:indexPath.row];
+     [self.dao.companies removeObjectAtIndex:indexPath.row];
+    // [_trueCompanyList removeObjectAtIndex:indexPath.row];
 
  [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
  }
@@ -138,14 +159,14 @@
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
  {
     
-     NSString *companyToMove = [self.trueCompanyList objectAtIndex:fromIndexPath.row];
-     NSString *companyPhotoToMove = [self.trueImageList objectAtIndex:fromIndexPath.row];
+     Company *companyToMove = [self.dao.companies objectAtIndex:fromIndexPath.row];
+    // NSString *companyPhotoToMove = [self.trueImageList objectAtIndex:fromIndexPath.row];
       NSLog(@"happened with %@", companyToMove);
-     [self.trueCompanyList removeObjectAtIndex:fromIndexPath.row];
-     [self.trueCompanyList insertObject:companyToMove atIndex:toIndexPath.row];
+     [self.dao.companies removeObjectAtIndex:fromIndexPath.row];
+     [self.dao.companies insertObject:companyToMove atIndex:toIndexPath.row];
      
-     [self.trueImageList removeObjectAtIndex:fromIndexPath.row];
-     [self.trueImageList insertObject:companyPhotoToMove atIndex:toIndexPath.row];
+     //[self.trueImageList removeObjectAtIndex:fromIndexPath.row];
+     //[self.trueImageList insertObject:companyPhotoToMove atIndex:toIndexPath.row];
      
      [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
      [self.tableView endUpdates];
@@ -169,10 +190,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSString *selectedCompany = [self.trueCompanyList objectAtIndex:[indexPath row]];
+    Company *selectedCompany = [self.dao.companies objectAtIndex:[indexPath row]];
     
     self.productViewController = [[ProductVC alloc]init];
-     if ([selectedCompany isEqualToString: @"Apple mobile devices"]){
+  /*   if ([selectedCompany == apple]){
         self.productViewController.title = @"Apple mobile devices";
          self.productViewController.products = self.appleProds;
           self.productViewController.productPhotos = self.appleProdPhotos;
@@ -196,7 +217,9 @@
                   self.productViewController.products = self.motorolaProds;
                    self.productViewController.productPhotos = self.motoProdPhotos;
 
-             }
+             } */
+    
+    self.productViewController.currentCompany = selectedCompany;
     
          
     [self.navigationController

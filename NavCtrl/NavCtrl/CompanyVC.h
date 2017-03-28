@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductVC.h"
+#import "DAO.h"
 
 @interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (retain, nonatomic) DAO *dao;
+
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
+//@property (nonatomic,retain) NSMutableArray *companies;
 @property (nonatomic, retain) NSArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
 @property (nonatomic, retain) NSMutableArray *trueCompanyList;
@@ -24,5 +28,6 @@
 @property (nonatomic, retain) NSMutableArray *blackBerryProdPhotos;
 @property (nonatomic, retain) NSMutableArray *motoProdPhotos;
 @property (nonatomic, retain) NSMutableArray *samsungProdPhotos;
+@property (nonatomic, retain) NSMutableArray *productsArray;
 
 @end

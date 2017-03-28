@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WebViewCon.h"
+#import "Company.h"
+#import "Product.h"
 
 @interface ProductVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) Company *currentCompany;
 @property (nonatomic, retain) NSMutableArray *products;
 @property (nonatomic, retain) NSMutableArray *productPhotos;
 @property (nonatomic, retain) WebViewCon *webViewControler;

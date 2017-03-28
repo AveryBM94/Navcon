@@ -25,6 +25,9 @@
 		9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF241E4A33F1002D55B8 /* ProductVC.m */; };
 		9E62FF271E4A33F1002D55B8 /* ProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF251E4A33F1002D55B8 /* ProductVC.xib */; };
 		9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */; };
+		F93E40A01E8306C2005BDB5F /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = F93E409F1E8306C2005BDB5F /* Company.m */; };
+		F93E40A31E8306DE005BDB5F /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = F93E40A21E8306DE005BDB5F /* Product.m */; };
+		F95F1FC71E8AD6AD00AF53C0 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F1FC61E8AD6AD00AF53C0 /* DAO.m */; };
 		F96B36601E65FC1000B2CCDE /* navConApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */; };
 		F96B36621E65FCCD00B2CCDE /* navConSamsung.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36611E65FCCD00B2CCDE /* navConSamsung.png */; };
 		F96B36641E65FECA00B2CCDE /* navConMotorola.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36631E65FECA00B2CCDE /* navConMotorola.png */; };
@@ -81,6 +84,12 @@
 		9E62FF241E4A33F1002D55B8 /* ProductVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductVC.m; sourceTree = "<group>"; };
 		9E62FF251E4A33F1002D55B8 /* ProductVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductVC.xib; sourceTree = "<group>"; };
 		9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F93E409E1E8306C2005BDB5F /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		F93E409F1E8306C2005BDB5F /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		F93E40A11E8306DE005BDB5F /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		F93E40A21E8306DE005BDB5F /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		F95F1FC51E8AD6AD00AF53C0 /* DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAO.h; sourceTree = "<group>"; };
+		F95F1FC61E8AD6AD00AF53C0 /* DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAO.m; sourceTree = "<group>"; };
 		F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = navConApple.jpeg; sourceTree = "<group>"; };
 		F96B36611E65FCCD00B2CCDE /* navConSamsung.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navConSamsung.png; sourceTree = "<group>"; };
 		F96B36631E65FECA00B2CCDE /* navConMotorola.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navConMotorola.png; sourceTree = "<group>"; };
@@ -142,6 +151,8 @@
 			children = (
 				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
+				F95F1FC51E8AD6AD00AF53C0 /* DAO.h */,
+				F95F1FC61E8AD6AD00AF53C0 /* DAO.m */,
 				9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */,
 			);
 			name = ParentViewController;
@@ -152,6 +163,10 @@
 			children = (
 				9E62FF231E4A33F1002D55B8 /* ProductVC.h */,
 				9E62FF241E4A33F1002D55B8 /* ProductVC.m */,
+				F93E409E1E8306C2005BDB5F /* Company.h */,
+				F93E409F1E8306C2005BDB5F /* Company.m */,
+				F93E40A11E8306DE005BDB5F /* Product.h */,
+				F93E40A21E8306DE005BDB5F /* Product.m */,
 				9E62FF251E4A33F1002D55B8 /* ProductVC.xib */,
 				F96B36811E675CDC00B2CCDE /* WebViewCon.h */,
 				F96B36821E675CDC00B2CCDE /* WebViewCon.m */,
@@ -367,8 +382,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F93E40A31E8306DE005BDB5F /* Product.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
+				F93E40A01E8306C2005BDB5F /* Company.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
+				F95F1FC71E8AD6AD00AF53C0 /* DAO.m in Sources */,
 				F96B36841E675CDC00B2CCDE /* WebViewCon.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,
