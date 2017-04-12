@@ -31,10 +31,12 @@
         Product *iPadPro = [[Product alloc]initWithProductNames:@"iPad Pro" productPhotos:@"iPadPro.jpeg" url:@"http://www.apple.com/iphone/"];
         
         NSMutableArray *appleProducts = [[NSMutableArray alloc]initWithObjects:iphone, iPodTouch, iPadPro, nil];
+        ///////////
+        //ADD TICKER
+        ////////////
+        Company *apple = [[Company alloc]initWithCompanyName:@"Apple mobile devices" logos:@"navConApple.jpeg" products:appleProducts ticker:@"APPL"];
         
-        Company *apple = [[Company alloc]initWithCompanyName:@"Apple mobile devices" logos:@"navConApple.jpeg" products:appleProducts];
-        
-        
+       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         Product *galaxyS7 = [[Product alloc]initWithProductNames:@"Galaxy S7" productPhotos:@"GalaxyS7.jpeg" url:@"http://www.apple.com/iphone/"];
         
@@ -44,7 +46,7 @@
         
         NSMutableArray *samsungProducts = [[NSMutableArray alloc]initWithObjects:galaxyS7, galaxyNote, galaxyTab, nil];
         
-        Company *samsung = [[Company alloc]initWithCompanyName:@"Samsung mobile devices" logos:@"navConSamsung.png" products:samsungProducts];
+        Company *samsung = [[Company alloc]initWithCompanyName:@"Samsung mobile devices" logos:@"navConSamsung.png" products:samsungProducts ticker:@"SSNNF"];
         
         
         
@@ -56,7 +58,7 @@
         
         NSMutableArray *blackBerryProducts = [[NSMutableArray alloc]initWithObjects:passport, leap, priv, nil];
         
-        Company *blackBerry = [[Company alloc]initWithCompanyName:@"Black Berry mobile devices" logos:@"navConBlackBerry.jpeg" products:blackBerryProducts];
+        Company *blackBerry = [[Company alloc]initWithCompanyName:@"Black Berry mobile devices" logos:@"navConBlackBerry.jpeg" products:blackBerryProducts ticker:@"BBRY"];
         
         
         
@@ -68,7 +70,7 @@
         
         NSMutableArray *motoProducts = [[NSMutableArray alloc]initWithObjects:motoZPlay, motoG4Plus, motoZForceDroid, nil];
         
-        Company *moto = [[Company alloc]initWithCompanyName:@"Motorola Moto mobile devices" logos:@"navConMotorola.png" products:motoProducts];
+        Company *moto = [[Company alloc]initWithCompanyName:@"Motorola Moto mobile devices" logos:@"navConMotorola.png" products:motoProducts ticker:@"MSI"];
         
         
         

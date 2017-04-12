@@ -28,6 +28,8 @@
 		F93E40A01E8306C2005BDB5F /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = F93E409F1E8306C2005BDB5F /* Company.m */; };
 		F93E40A31E8306DE005BDB5F /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = F93E40A21E8306DE005BDB5F /* Product.m */; };
 		F95F1FC71E8AD6AD00AF53C0 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F1FC61E8AD6AD00AF53C0 /* DAO.m */; };
+		F95F1FCB1E8C438A00AF53C0 /* AddButtonDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F1FC91E8C438A00AF53C0 /* AddButtonDataViewController.m */; };
+		F95F1FCC1E8C438A00AF53C0 /* AddButtonDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95F1FCA1E8C438A00AF53C0 /* AddButtonDataViewController.xib */; };
 		F96B36601E65FC1000B2CCDE /* navConApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */; };
 		F96B36621E65FCCD00B2CCDE /* navConSamsung.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36611E65FCCD00B2CCDE /* navConSamsung.png */; };
 		F96B36641E65FECA00B2CCDE /* navConMotorola.png in Resources */ = {isa = PBXBuildFile; fileRef = F96B36631E65FECA00B2CCDE /* navConMotorola.png */; };
@@ -90,6 +92,9 @@
 		F93E40A21E8306DE005BDB5F /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		F95F1FC51E8AD6AD00AF53C0 /* DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAO.h; sourceTree = "<group>"; };
 		F95F1FC61E8AD6AD00AF53C0 /* DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAO.m; sourceTree = "<group>"; };
+		F95F1FC81E8C438A00AF53C0 /* AddButtonDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddButtonDataViewController.h; sourceTree = "<group>"; };
+		F95F1FC91E8C438A00AF53C0 /* AddButtonDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonDataViewController.m; sourceTree = "<group>"; };
+		F95F1FCA1E8C438A00AF53C0 /* AddButtonDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonDataViewController.xib; sourceTree = "<group>"; };
 		F96B365F1E65FC1000B2CCDE /* navConApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = navConApple.jpeg; sourceTree = "<group>"; };
 		F96B36611E65FCCD00B2CCDE /* navConSamsung.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navConSamsung.png; sourceTree = "<group>"; };
 		F96B36631E65FECA00B2CCDE /* navConMotorola.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navConMotorola.png; sourceTree = "<group>"; };
@@ -151,9 +156,12 @@
 			children = (
 				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
+				9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */,
 				F95F1FC51E8AD6AD00AF53C0 /* DAO.h */,
 				F95F1FC61E8AD6AD00AF53C0 /* DAO.m */,
-				9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */,
+				F95F1FC81E8C438A00AF53C0 /* AddButtonDataViewController.h */,
+				F95F1FC91E8C438A00AF53C0 /* AddButtonDataViewController.m */,
+				F95F1FCA1E8C438A00AF53C0 /* AddButtonDataViewController.xib */,
 			);
 			name = ParentViewController;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 				9E62FF271E4A33F1002D55B8 /* ProductVC.xib in Resources */,
 				48A656BF18163BF200746D36 /* InfoPlist.strings in Resources */,
 				F96B366C1E660BE800B2CCDE /* MotoZPlay.jpeg in Resources */,
+				F95F1FCC1E8C438A00AF53C0 /* AddButtonDataViewController.xib in Resources */,
 				F96B36721E660C7500B2CCDE /* passport.jpeg in Resources */,
 				F96B36701E660C6100B2CCDE /* leap.jpeg in Resources */,
 				48A656C718163BF200746D36 /* Images.xcassets in Resources */,
@@ -387,6 +396,7 @@
 				F93E40A01E8306C2005BDB5F /* Company.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
 				F95F1FC71E8AD6AD00AF53C0 /* DAO.m in Sources */,
+				F95F1FCB1E8C438A00AF53C0 /* AddButtonDataViewController.m in Sources */,
 				F96B36841E675CDC00B2CCDE /* WebViewCon.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,

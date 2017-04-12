@@ -19,12 +19,14 @@
     
 - (instancetype)initWithCompanyName:(NSString *)companyName
                               logos:(NSString *)logos
-                              products:(NSMutableArray *)products{
+                              products:(NSMutableArray *)products
+                             ticker:(NSString*)ticker{
     
     if (self = [super init]) {
         self.companyName = companyName;
         self.logos = logos;
         self.products = products;
+        self.ticker = ticker;
         
         
     }

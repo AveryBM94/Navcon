@@ -18,6 +18,7 @@
 //@property (nonatomic,retain) NSMutableArray *companies;
 @property (nonatomic, retain) NSArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
+@property (nonatomic, retain) AddButtonDataViewController *addButtonVC;
 @property (nonatomic, retain) NSMutableArray *trueCompanyList;
 @property (nonatomic, retain) NSMutableArray *trueImageList;
 @property (nonatomic, retain) NSMutableArray *appleProds;
@@ -30,4 +31,7 @@
 @property (nonatomic, retain) NSMutableArray *samsungProdPhotos;
 @property (nonatomic, retain) NSMutableArray *productsArray;
 
+
+-(void)addButtonScreen;
+-(void)saveButton;
 @end
