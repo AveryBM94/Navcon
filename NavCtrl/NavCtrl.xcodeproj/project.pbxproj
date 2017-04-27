@@ -48,6 +48,8 @@
 		F96B36801E67519800B2CCDE /* GalaxyTab.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B367F1E67519800B2CCDE /* GalaxyTab.jpeg */; };
 		F96B36841E675CDC00B2CCDE /* WebViewCon.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B36821E675CDC00B2CCDE /* WebViewCon.m */; };
 		F96B36851E675CDC00B2CCDE /* WebViewCon.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96B36831E675CDC00B2CCDE /* WebViewCon.xib */; };
+		F98750DF1EA00CCE0061C4C4 /* EditButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98750DD1EA00CCE0061C4C4 /* EditButtonViewController.m */; };
+		F98750E01EA00CCE0061C4C4 /* EditButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98750DE1EA00CCE0061C4C4 /* EditButtonViewController.xib */; };
 		F994565D1E79A237006E74A6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F994565C1E79A237006E74A6 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +116,9 @@
 		F96B36811E675CDC00B2CCDE /* WebViewCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewCon.h; sourceTree = "<group>"; };
 		F96B36821E675CDC00B2CCDE /* WebViewCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewCon.m; sourceTree = "<group>"; };
 		F96B36831E675CDC00B2CCDE /* WebViewCon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewCon.xib; sourceTree = "<group>"; };
+		F98750DC1EA00CCE0061C4C4 /* EditButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditButtonViewController.h; sourceTree = "<group>"; };
+		F98750DD1EA00CCE0061C4C4 /* EditButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditButtonViewController.m; sourceTree = "<group>"; };
+		F98750DE1EA00CCE0061C4C4 /* EditButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditButtonViewController.xib; sourceTree = "<group>"; };
 		F994565C1E79A237006E74A6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -179,6 +184,9 @@
 				F96B36811E675CDC00B2CCDE /* WebViewCon.h */,
 				F96B36821E675CDC00B2CCDE /* WebViewCon.m */,
 				F96B36831E675CDC00B2CCDE /* WebViewCon.xib */,
+				F98750DC1EA00CCE0061C4C4 /* EditButtonViewController.h */,
+				F98750DD1EA00CCE0061C4C4 /* EditButtonViewController.m */,
+				F98750DE1EA00CCE0061C4C4 /* EditButtonViewController.xib */,
 			);
 			name = ProductViewController;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 				48A656C718163BF200746D36 /* Images.xcassets in Resources */,
 				F96B367C1E660CC200B2CCDE /* GalaxyNote7.jpeg in Resources */,
 				F96B36741E660C8B00B2CCDE /* priv.jpeg in Resources */,
+				F98750E01EA00CCE0061C4C4 /* EditButtonViewController.xib in Resources */,
 				F96B36761E660C9A00B2CCDE /* iPodTouch.png in Resources */,
 				F96B367E1E660CD400B2CCDE /* GalaxyS7.jpeg in Resources */,
 				F96B36621E65FCCD00B2CCDE /* navConSamsung.png in Resources */,
@@ -399,6 +408,7 @@
 				F95F1FCB1E8C438A00AF53C0 /* AddButtonDataViewController.m in Sources */,
 				F96B36841E675CDC00B2CCDE /* WebViewCon.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
+				F98750DF1EA00CCE0061C4C4 /* EditButtonViewController.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

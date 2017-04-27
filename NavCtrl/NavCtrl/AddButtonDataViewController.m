@@ -16,29 +16,93 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.DAO = [DAO sharedManager];
+
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view from its nib.
-    /*[self.companyTextField setPlaceholder:@"Enter Company Name"];
-    [self.companyTextField2 setPlaceholder:@"Enter Text"];
-    [self.companyTextField3 setPlaceholder:@"Enter Text"];*/
+    
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
                                    initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = saveButton;
+    self.companyNameTextField.delegate = self;
+    self.companyLogoTextField.delegate = self;
+    self.companyTickerTextField.delegate = self;
+  
+        
+    
+    
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardDidShowNotification object:nil];
+    return YES;
 }
 
--(void)save{
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardDidHideNotification object:nil];
     
-    //if company mode
+    [self.view endEditing:YES];
+    return YES;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = -keyboardSize.height+200;
+        self.view.frame = f;
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = 0.0f;
+        self.view.frame = f;
+    }];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    //the next 2 if statements handel the grey text within the text field.
+    
+    if (self.DAO.isCompanyAddMode == YES){
+        self.companyNameTextField.placeholder = @"Company Name ";
+        [self.companyLogoTextField setPlaceholder:@"Company Photo"];
+        [self.companyTickerTextField setPlaceholder:@"Company Ticker"];
+
+    }
+    
+    if (self.DAO.isProductAddMode == YES){
+        [self.companyNameTextField setPlaceholder:@"Product Name "];
+        [self.companyLogoTextField setPlaceholder:@"Product Photo"];
+        [self.companyTickerTextField setPlaceholder:@"Product Ticker"];
+        
+    }
+    
+    
+}
+
+- (void)save {
+    
+    if(self.DAO.isCompanyAddMode == YES){
     Company *newCompany = [[Company alloc]init];
     newCompany.companyName = self.companyNameTextField.text;
     newCompany.ticker = self.companyTickerTextField.text;
-    
-    //if product
+    newCompany.logos = self.companyLogoTextField.text;
+    [self.DAO.companies addObject:newCompany];
+    [self.navigationController popViewControllerAnimated:YES];
+        
+        
+    }
+    else if (self.DAO.isProductAddMode == YES){
     Product *newProduct =  [[Product alloc]init];
     newProduct.productNames = self.companyNameTextField.text;
-    newProduct.productPhotos =self.companyLogoTextField.text;
-    
-    
+    newProduct.productPhotos = self.companyLogoTextField.text;
+    newProduct.urlString = self.companyTickerTextField.text;
+    }
     
 }
 
@@ -57,6 +121,20 @@
 }
 */
 
+- (void)greyCompanyText{
+    //The three lines below set greyed out default text in the textfields in the addButtonViewController.xib
+    /*[self.companyNameTextField setPlaceholder:@"Company Name "];
+    [self.companyLogoTextField setPlaceholder:@"Company Photo"];
+    [self.companyTickerTextField setPlaceholder:@"Company Ticker"];*/
+}
+
+- (void)greyProductText{
+    //The three lines below set greyed out default text in the textfields in the addButtonViewController.xib
+    /*[self.companyNameTextField setPlaceholder:@"Product Name "];
+    [self.companyLogoTextField setPlaceholder:@"Product Photo"];
+    [self.companyTickerTextField setPlaceholder:@"Product Ticker"];
+    */
+}
 - (void)dealloc {
    // [_addCompany release];
    // [_companyLabel release];

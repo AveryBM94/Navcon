@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ProductVC.h"
 #import "DAO.h"
+#import "AddButtonDataViewController.h"
+#import "EditButtonViewController.h"
 
-@interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource, reloadDelegate>
 
 @property (retain, nonatomic) DAO *dao;
 
@@ -19,6 +21,7 @@
 @property (nonatomic, retain) NSArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
 @property (nonatomic, retain) AddButtonDataViewController *addButtonVC;
+@property (retain, nonatomic) EditButtonViewController *editButtonVC;
 @property (nonatomic, retain) NSMutableArray *trueCompanyList;
 @property (nonatomic, retain) NSMutableArray *trueImageList;
 @property (nonatomic, retain) NSMutableArray *appleProds;

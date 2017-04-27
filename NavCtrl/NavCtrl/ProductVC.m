@@ -16,45 +16,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dao = [DAO sharedManager];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
-         self.navigationItem.rightBarButtonItem = editButton;
-    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonScreen)];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton, addButton, nil];
+
+        // self.navigationItem.rightBarButtonItem = editButton;
+    self.tableView.allowsSelectionDuringEditing = TRUE;
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    
-
-    
-//    if ([self.title isEqualToString:@"Apple mobile devices"]) {
-//        self.products = [[NSMutableArray alloc]initWithObjects: @"iPhone", @"iPod Touch",@"iPad Pro",nil];
-//        self.productPhotos = [[NSMutableArray alloc]initWithObjects:@"iPodTouch.png", @"iPhone.jpeg", @"iPadPro.jpeg", nil]; //apple product photos
-//    }
-//    else if ([self.title isEqualToString:@"Black Berry mobile devices"]){
-//        self.products = [[NSMutableArray alloc]initWithObjects:@"Passport", @"Leap", @"Priv",nil];
-//        self.productPhotos = [[NSMutableArray alloc]initWithObjects:@"passport.jpeg", @"leap.jpeg", @"priv.jpeg", nil];
-//    }
-//    else if ([self.title isEqualToString:@"Motorola Moto mobile devices"]){
-//        
-//        self.products = [[NSMutableArray alloc]initWithObjects:@"Moto Z Play", @"Moto G4 Plus", @"Moto Z Force Droid", nil];
-//        self.productPhotos = [[NSMutableArray alloc]initWithObjects:@"MotoZPlay.jpeg", @"MotoG4Plus.jpeg", @"MotoZForceDroid.jpeg", nil];
-//    }
-//    
-//    else if ([self.title isEqualToString:@"Samsung mobile devices"]) {
-//        self.products = [[NSMutableArray alloc]initWithObjects: @"Galaxy S7", @"Galaxy Note", @"Galaxy Tab", nil];
-//        self.productPhotos = [[NSMutableArray alloc]initWithObjects:@"GalaxyS7.jpeg", @"GalaxyNote7.jpeg", @"GalaxyTab.jpeg", nil];
-//    }
-//    [self.tableView reloadData];
 }
+
+-(void)addButtonScreen{
+    //line below init's the AddButtonDataViewController with addButtonVC
+    
+    self.addButtonVC = [[AddButtonDataViewController alloc] init];
+   // [self.addButtonVC.companyNameTextField setPlaceholder:@"Product Name "];
+    //[self.addButtonVC.companyLogoTextField setPlaceholder:@"Product Photo"];
+    //[self.addButtonVC.companyTickerTextField setPlaceholder:@"Product Ticker"];
+    self.dao.isProductAddMode = YES;
+    
+    
+    
+    //line below pushes to the addButtonViewController
+    [self.navigationController pushViewController:self.addButtonVC animated:YES];
+}
+
 
 -(void)toggleEditMode {
     if (self.editing) {
         [super setEditing:NO animated:NO];
         [self.tableView setEditing:NO animated:YES];
         self.navigationItem.rightBarButtonItem.title = @"Edit";
+       // UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonScreen)];
+       // self.navigationItem.leftBarButtonItem = addButton;
+        
         [self.tableView reloadData];
     }
     
@@ -203,6 +204,13 @@
      Product *productSelected = [self.currentCompany.products objectAtIndex:indexPath.row];
      
      self.webViewControler.urlToLoad = [NSURL URLWithString:productSelected.urlString];
+     
+     
+     //if (self.isEditing == TRUE)
+     
+     
+     
+     
      
      
      /*if ([productSelected isEqualToString:@"iPad Pro"]) {

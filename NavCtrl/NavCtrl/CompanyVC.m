@@ -35,6 +35,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.dao = [DAO sharedManager];
+    self.dao.delegate = self;
+    
+    
+    self.productViewController = [[ProductVC alloc]init];
+    
+    self.editButtonVC = [[EditButtonViewController alloc]initWithNibName:@"EditButtonViewController" bundle:nil];
+    
 
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     //line below adds an edit button to the nav con
@@ -44,13 +51,13 @@
     
   
 
-    self.navigationItem.rightBarButtonItem = editButton;
-    self.navigationItem.leftBarButtonItem = addButton;
+   // self.navigationItem.rightBarButtonItem = editButton;
+    // self.navigationItem.leftBarButtonItem = addButton;
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
     self.navigationItem.leftBarButtonItem.enabled = NO;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton, addButton, nil];
     
-    
-    
+    self.tableView.allowsSelectionDuringEditing = TRUE;
     
     //line below sets the title at the top of the nav con
     self.navigationItem.title = @"Mobile Device Company";
@@ -62,6 +69,13 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    self.dao.isCompanyAddMode = NO;
+    self.dao.isCompanyEditMode = NO;
+    self.dao.isProductAddMode = NO;
+    self.dao.isProductEditMode = NO;
+    
+    [self.dao httpGetRequest];
+    
     [self.tableView reloadData];
 }
 
@@ -71,14 +85,13 @@
     //line below init's the AddButtonDataViewController with addButtonVC
     
     self.addButtonVC = [[AddButtonDataViewController alloc] init];
-    self.addButtonVC.isCompanyMode = YES;
-    [self.navigationController
-     pushViewController:self.addButtonVC
-     animated:YES];
+        self.dao.isCompanyAddMode = YES;
+    //line below pushes to the addButtonViewController
+    [self.navigationController pushViewController:self.addButtonVC animated:YES];
 }
 
 -(void)saveButton{
-    
+    self.addButtonVC = [[AddButtonDataViewController alloc] init];
     
 }
 
@@ -116,7 +129,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     //if ([[self.companies objectAtIndex:indexPath.row] isEqualToString:@"Apple mobile devices"]) {
@@ -124,6 +137,7 @@
     //}
     Company *test =  [self.dao.companies objectAtIndex:indexPath.row];
     cell.textLabel.text = test.companyName;
+    cell.detailTextLabel.text = test.tickerPrice;
     cell.imageView.image = [UIImage imageNamed:test.logos];
 //    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     return cell;
@@ -137,7 +151,6 @@
  // Return NO if you do not want the specified item to be editable.
  return YES;
  }
-
 
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -190,37 +203,24 @@
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     Company *selectedCompany = [self.dao.companies objectAtIndex:[indexPath row]];
     
-    self.productViewController = [[ProductVC alloc]init];
-  /*   if ([selectedCompany == apple]){
-        self.productViewController.title = @"Apple mobile devices";
-         self.productViewController.products = self.appleProds;
-          self.productViewController.productPhotos = self.appleProdPhotos;
-         
-} else if ([selectedCompany isEqualToString:@"Samsung mobile devices"]){
-         self.productViewController.title = @"Samsung mobile devices";
-          self.productViewController.products = self.samsungProds;
-           self.productViewController.productPhotos = self.samsungProdPhotos;
-
-    }
     
-         else if ([selectedCompany isEqualToString:@"Black Berry mobile devices"]){
-             self.productViewController.title = @"Black Berry mobile devices";
-              self.productViewController.products = self.blackBerryProds;
-               self.productViewController.productPhotos = self.blackBerryProdPhotos;
-
-         }
+  
     
-             else if ([selectedCompany isEqualToString:@"Motorola Moto mobile devices"]){
-                 self.productViewController.title = @"Motorola Moto mobile devices";
-                  self.productViewController.products = self.motorolaProds;
-                   self.productViewController.productPhotos = self.motoProdPhotos;
-
-             } */
+    if (self.isEditing == TRUE){
+        
+        self.editButtonVC.selectedCompany = selectedCompany;
+        self.editButtonVC.isEditingCompany = TRUE;
+        
+        [self.navigationController pushViewController:self.editButtonVC animated:TRUE];
+        
+    } else{
+        
     
     self.productViewController.currentCompany = selectedCompany;
     
@@ -228,9 +228,14 @@
     [self.navigationController
      pushViewController:self.productViewController
      animated:YES];
+        
+    }
     
 }
 
+-(void) reloadTableView{
+    [self.tableView reloadData];
+}
 
 /*
 #pragma mark - Navigation

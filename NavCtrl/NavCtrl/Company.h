@@ -13,11 +13,14 @@
 @property (nonatomic, retain) NSString *logos;
 @property (nonatomic, retain) NSString *ticker;
 @property (nonatomic, retain) NSMutableArray *products;
+@property (nonatomic, retain) NSString *tickerPrice;
+
+
 
 - (instancetype)initWithCompanyName:(NSString*)companyName
                           logos:(NSString*)logos
                    products:(NSMutableArray*)products
-                            ticker:(NSString*)ticker;
+                             ticker:(NSString*)ticker;
 
 
 

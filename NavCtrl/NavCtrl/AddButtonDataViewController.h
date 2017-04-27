@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Company.h"
 #import "Product.h"
+#import "DAO.h"
 
-@interface AddButtonDataViewController : UIViewController
-
-@property BOOL isCompanyMode;
+@interface AddButtonDataViewController : UIViewController <UITextFieldDelegate>
+@property (retain, nonatomic) DAO *DAO;
 @property (retain, nonatomic) IBOutlet UITextField *companyNameTextField;
 @property (retain, nonatomic) IBOutlet UITextField *productNameTextField;
 @property (retain, nonatomic) IBOutlet UITextField *companyTickerTextField;
@@ -21,6 +21,6 @@
 @property (retain, nonatomic) IBOutlet UITextField *productImageTextField;
 
 
-
-
+- (void)greyCompanyText;
+- (void)greyProductText;
 @end

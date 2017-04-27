@@ -7,6 +7,7 @@
 //
 
 #import "DAO.h"
+#import "CompanyVC.h"
 
 @implementation DAO
 
@@ -24,6 +25,7 @@
     self = [super init];
     if (self) {
         
+        
         Product *iphone = [[Product alloc]initWithProductNames:@"iphone" productPhotos:@"iPhone.jpeg" url:@"https://www.google.com/"];
         
         Product *iPodTouch = [[Product alloc]initWithProductNames:@"iPod Touch" productPhotos:@"iPodTouch.png" url:@"http://www.apple.com/iphone/"];
@@ -34,7 +36,7 @@
         ///////////
         //ADD TICKER
         ////////////
-        Company *apple = [[Company alloc]initWithCompanyName:@"Apple mobile devices" logos:@"navConApple.jpeg" products:appleProducts ticker:@"APPL"];
+        Company *apple = [[Company alloc]initWithCompanyName:@"Apple mobile devices" logos:@"navConApple.jpeg" products:appleProducts ticker:@"AAPL"];
         
        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -80,5 +82,66 @@
     }
     return self;
 }
+
+-(NSString*)generateStockSymbolUrl {
+    self.tickerData = [[NSMutableArray alloc] init];
+    
+    for (Company *comp in self.companies) {
+        [self.tickerData addObject:comp.ticker];
+        //Take the tickerData array, addObject the comp.ticker;
+        NSLog(@"%@",_tickerData);
+    }
+    
+    NSString *tickers = [self.tickerData componentsJoinedByString:@"+"];
+    NSLog(@"%@",tickers);
+    
+    NSString *baseUrl = [NSString stringWithFormat:@"http://finance.yahoo.com/d/quotes.csv?s=%@&f=a", tickers];
+    NSLog(@"%@",baseUrl);
+    
+       return baseUrl;
+}
+
+- (void)httpGetRequest{
+    
+    //code challange 2 parse through data to get the prices in the right order according to company
+    NSString *urlEndpoint = [self generateStockSymbolUrl];
+    NSLog(@"endpoint: %@", urlEndpoint);
+    NSURL *url = [NSURL URLWithString:urlEndpoint];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"GET";
+    
+    [[session dataTaskWithRequest:request completionHandler:^(NSData * data, NSURLResponse *response, NSError *error)//the code within the following brackets will run after the code above regaurdless of weather or not the code above works or not.
+      {
+          
+          //turns json info into a dictionary
+          NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+          
+          
+          NSArray *resultsArray = [dataString componentsSeparatedByString:@"\n"];
+          
+          //NSLog(@"RESULTS String: %@", dataString);
+          //NSLog(@"RESULTS Array: %@", resultsArray);
+          
+          int i = 0;
+          for (Company *comp in self.companies) {
+              comp.tickerPrice = resultsArray[i];
+              i++;
+              NSLog(@"comp.TickerPrice: %@", comp.tickerPrice);
+          }
+          
+          dispatch_async(dispatch_get_main_queue(), ^{
+              //
+              //turns the dictionary value's into double's
+              [self.delegate reloadTableView];
+          });
+          
+      }]resume];
+    
+}
+
+
 
 @end
