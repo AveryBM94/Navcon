@@ -50,6 +50,8 @@
 		F96B36851E675CDC00B2CCDE /* WebViewCon.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96B36831E675CDC00B2CCDE /* WebViewCon.xib */; };
 		F98750DF1EA00CCE0061C4C4 /* EditButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98750DD1EA00CCE0061C4C4 /* EditButtonViewController.m */; };
 		F98750E01EA00CCE0061C4C4 /* EditButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98750DE1EA00CCE0061C4C4 /* EditButtonViewController.xib */; };
+		F98751081EB271820061C4C4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98751071EB271820061C4C4 /* CoreData.framework */; };
+		F987510B1EB272290061C4C4 /* NavCtrl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F98751091EB272290061C4C4 /* NavCtrl.xcdatamodeld */; };
 		F994565D1E79A237006E74A6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F994565C1E79A237006E74A6 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,8 @@
 		F98750DC1EA00CCE0061C4C4 /* EditButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditButtonViewController.h; sourceTree = "<group>"; };
 		F98750DD1EA00CCE0061C4C4 /* EditButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditButtonViewController.m; sourceTree = "<group>"; };
 		F98750DE1EA00CCE0061C4C4 /* EditButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditButtonViewController.xib; sourceTree = "<group>"; };
+		F98751071EB271820061C4C4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F987510A1EB272290061C4C4 /* NavCtrl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NavCtrl.xcdatamodel; sourceTree = "<group>"; };
 		F994565C1E79A237006E74A6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -127,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98751081EB271820061C4C4 /* CoreData.framework in Frameworks */,
 				F994565D1E79A237006E74A6 /* WebKit.framework in Frameworks */,
 				48A656B718163BF200746D36 /* CoreGraphics.framework in Frameworks */,
 				48A656B918163BF200746D36 /* UIKit.framework in Frameworks */,
@@ -152,6 +157,7 @@
 			children = (
 				48A656C318163BF200746D36 /* NavControllerAppDelegate.h */,
 				48A656C418163BF200746D36 /* NavControllerAppDelegate.m */,
+				F98751091EB272290061C4C4 /* NavCtrl.xcdatamodeld */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 		48A656B318163BF200746D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F98751071EB271820061C4C4 /* CoreData.framework */,
 				F994565C1E79A237006E74A6 /* WebKit.framework */,
 				48A656B418163BF200746D36 /* Foundation.framework */,
 				48A656B618163BF200746D36 /* CoreGraphics.framework */,
@@ -403,6 +410,7 @@
 				F93E40A31E8306DE005BDB5F /* Product.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
 				F93E40A01E8306C2005BDB5F /* Company.m in Sources */,
+				F987510B1EB272290061C4C4 /* NavCtrl.xcdatamodeld in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
 				F95F1FC71E8AD6AD00AF53C0 /* DAO.m in Sources */,
 				F95F1FCB1E8C438A00AF53C0 /* AddButtonDataViewController.m in Sources */,
@@ -639,6 +647,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F98751091EB272290061C4C4 /* NavCtrl.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F987510A1EB272290061C4C4 /* NavCtrl.xcdatamodel */,
+			);
+			currentVersion = F987510A1EB272290061C4C4 /* NavCtrl.xcdatamodel */;
+			path = NavCtrl.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 48A656A918163BF200746D36 /* Project object */;
 }

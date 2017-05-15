@@ -28,6 +28,22 @@
                         <outlet property="delegate" destination="-1" id="rfX-ae-JqV"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-N3-SKA">
+                    <rect key="frame" x="270" y="608" width="36" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Redo"/>
+                    <connections>
+                        <action selector="redoButton:" destination="-1" eventType="touchUpInside" id="6pZ-oK-OOc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCO-bK-Xck">
+                    <rect key="frame" x="60" y="608" width="38" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Undo"/>
+                    <connections>
+                        <action selector="undoButton:" destination="-1" eventType="touchUpInside" id="2ab-MO-aCe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>

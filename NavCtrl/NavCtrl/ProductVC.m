@@ -30,6 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 -(void)addButtonScreen{
@@ -42,6 +43,7 @@
     self.dao.isProductAddMode = YES;
     
     
+    self.addButtonVC.currentCompany = self.currentCompany;
     
     //line below pushes to the addButtonViewController
     [self.navigationController pushViewController:self.addButtonVC animated:YES];
@@ -91,7 +93,11 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete){
+        
+        Product* selectedProduct = [self.currentCompany.products objectAtIndex:indexPath.row];
         [self.currentCompany.products removeObjectAtIndex:indexPath.row];
+
+        [self.dao deleteProductFromDB:selectedProduct fromCompany:self.currentCompany];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
@@ -169,10 +175,10 @@
  // Override to support rearranging the table view.
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
  {
-     NSString *productToMove = [self.products objectAtIndex:fromIndexPath.row];
+     NSString *productToMove = [self.currentCompany.products objectAtIndex:fromIndexPath.row];
 //     NSLog(@"happened with %@", companyToMove);
-     [self.products removeObjectAtIndex:fromIndexPath.row];
-     [self.products insertObject:productToMove atIndex:toIndexPath.row];
+     [self.currentCompany.products removeObjectAtIndex:fromIndexPath.row];
+     [self.currentCompany.products insertObject:productToMove atIndex:toIndexPath.row];
      NSString *productPhotoToMove = [self.productPhotos objectAtIndex:fromIndexPath.row];
           NSLog(@"happened with %@", productToMove);
      [self.productPhotos removeObjectAtIndex:fromIndexPath.row];
@@ -200,86 +206,42 @@
  {
  // Navigation logic may go here, for example:
  // Create the next view controller.
-     self.webViewControler = [[WebViewCon alloc]init];
+     
+     
      Product *productSelected = [self.currentCompany.products objectAtIndex:indexPath.row];
+
+     if (self.isEditing == TRUE){
+         self.editButtonVC = [[EditButtonViewController alloc]init];
+         self.editButtonVC.selectedCompany = self.currentCompany;
+         self.editButtonVC.selectedProduct = productSelected;
+         [self.navigationController pushViewController:self.editButtonVC animated:YES];
+         
+     }
+
+     else{
+         
+     self.webViewControler = [[WebViewCon alloc]init];
      
      self.webViewControler.urlToLoad = [NSURL URLWithString:productSelected.urlString];
      
      
-     //if (self.isEditing == TRUE)
+    
+        
+         [self.navigationController pushViewController:self.webViewControler animated:YES];
+
+     }
      
      
      
      
      
      
-     /*if ([productSelected isEqualToString:@"iPad Pro"]) {
-         NSURL *url = [NSURL URLWithString:@"http://www.apple.com/ipad/"];
-         self.webViewControler.urlToLoad = url;
-     } 
-     
-     if ([productSelected isEqualToString:@"iPod Touch"]) {
-         NSURL *url = [NSURL URLWithString:@"http://www.apple.com/ipod/"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"iPhone"]) {
-         NSURL *url = [NSURL URLWithString:@"http://www.apple.com/iphone/"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Passport"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_ss_i_2_17?url=search-alias%3Dmobile&field-keywords=black+berry+passport&sprefix=black+berry+passp%2Cmobile%2C273&crid=1L7VD8AGDZS7D&rh=n%3A2335752011%2Ck%3Ablack+berry+passport"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Leap"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/BlackBerry-Leap-Unlocked-Cellphone-Shadow/dp/B00UH9AMKM/ref=sr_1_1?ie=UTF8&qid=1489605089&sr=8-1&keywords=black+berry+leap"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Priv"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=black+berry+priv"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Moto Z Play"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=Moto+Z+Play&rh=n%3A2335752011%2Ck%3AMoto+Z+Play"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Moto G4 Plus"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=Moto+G4+Plus&rh=n%3A2335752011%2Ck%3AMoto+G4+Plus"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Moto Z Force Droid"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=Moto+Z+Force+Droid&rh=n%3A2335752011%2Ck%3AMoto+Z+Force+Droid"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Galaxy S7"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=Galaxy+S7&rh=n%3A2335752011%2Ck%3AGalaxy+S7"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Galaxy Note"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=Galaxy+Note&rh=n%3A2335752011%2Ck%3AGalaxy+Note"];
-         self.webViewControler.urlToLoad = url;
-     }
-
-     if ([productSelected isEqualToString:@"Galaxy Tab"]) {
-         NSURL *url = [NSURL URLWithString:@"https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=galaxy+tab&rh=n%3A2335752011%2Ck%3Agalaxy+tab"];
-         self.webViewControler.urlToLoad = url;
-         */
-    // }
-
+   
      
      
  // Pass the selected object to the new view controller.
  
  // Push the view controller.
- [self.navigationController pushViewController:self.webViewControler animated:YES];
  }
  
 

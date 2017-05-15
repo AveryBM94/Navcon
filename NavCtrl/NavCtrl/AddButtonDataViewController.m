@@ -93,6 +93,7 @@
     newCompany.ticker = self.companyTickerTextField.text;
     newCompany.logos = self.companyLogoTextField.text;
     [self.DAO.companies addObject:newCompany];
+        [self.DAO addCompanyToDB:newCompany];
     [self.navigationController popViewControllerAnimated:YES];
         
         
@@ -102,6 +103,12 @@
     newProduct.productNames = self.companyNameTextField.text;
     newProduct.productPhotos = self.companyLogoTextField.text;
     newProduct.urlString = self.companyTickerTextField.text;
+        [self.currentCompany.products addObject:newProduct];
+        //[[self.currentCompay.products addObject: newProduct]]
+       
+        [self.DAO addProductToDB:newProduct forCompany:self.currentCompany];
+        [self.navigationController popViewControllerAnimated:YES];
+
     }
     
 }

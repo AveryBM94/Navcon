@@ -33,6 +33,8 @@
 @property (nonatomic, retain) NSMutableArray *motoProdPhotos;
 @property (nonatomic, retain) NSMutableArray *samsungProdPhotos;
 @property (nonatomic, retain) NSMutableArray *productsArray;
+- (IBAction)undoButton:(UIButton *)sender;
+- (IBAction)redoButton:(UIButton *)sender;
 
 
 -(void)addButtonScreen;

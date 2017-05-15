@@ -46,14 +46,31 @@
 }
 
 
+
+
+
 - (void)save {
     
     if(self.isEditingCompany == TRUE){
     self.selectedCompany.companyName = self.productName.text;
     self.selectedCompany.ticker = self.tickerTextField.text;
     self.selectedCompany.logos  = self.companyPhotoTextField.text;
+        [self.DAO editCompanyInDB:self.selectedCompany];
     } else {
+        //update product name
+        //update product logo
+        NSString *oldName = [self.selectedProduct.productNames copy];
         
+        //first update the selected product with values in text fields
+        self.selectedProduct.productNames = self.productName.text;
+        self.selectedProduct.productPhotos = self.tickerTextField.text;
+        self.selectedProduct.urlString = self.companyPhotoTextField.text;
+        
+        
+        
+        
+        [self.DAO editProductInDB:self.selectedProduct fromProductNamed:oldName fromCompany:self.selectedCompany];
+
     }
     [self.navigationController popViewControllerAnimated:TRUE];
     

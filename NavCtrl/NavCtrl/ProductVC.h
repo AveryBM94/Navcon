@@ -12,15 +12,16 @@
 #import "Product.h"
 #import "DAO.h"
 #import "AddButtonDataViewController.h"
-
+#import "EditButtonViewController.h"
 
 @interface ProductVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) AddButtonDataViewController *addButtonVC;
+@property (nonatomic, retain) EditButtonViewController *editButtonVC;
 @property (nonatomic, retain) DAO *dao;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) Company *currentCompany;
-@property (nonatomic, retain) NSMutableArray *products;
+//@property (nonatomic, retain) NSMutableArray *products;
 @property (nonatomic, retain) NSMutableArray *productPhotos;
 @property (nonatomic, retain) WebViewCon *webViewControler;
 @end

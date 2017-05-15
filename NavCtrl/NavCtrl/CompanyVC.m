@@ -81,6 +81,29 @@
 
 #pragma mark - Table view data source
 
+
+
+- (IBAction)undoButton:(UIButton *)sender {
+    //if ([self.dao.context hasChanges]) {
+        [self.dao.context.undoManager undo];
+        [self.dao fetchFromCoreData];
+        [self.dao httpGetRequest];
+    //}
+}
+
+
+
+- (IBAction)redoButton:(UIButton *)sender {
+    //if ([self.dao.context hasChanges]) {
+        [self.dao.context.undoManager redo];
+        [self.dao fetchFromCoreData];
+        [self.dao httpGetRequest];
+    //}
+}
+
+
+
+
 -(void)addButtonScreen{
     //line below init's the AddButtonDataViewController with addButtonVC
     
@@ -116,6 +139,7 @@
         [self.tableView reloadData];
     }
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -161,8 +185,9 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.dao.companies removeObjectAtIndex:indexPath.row];
-        // [_trueCompanyList removeObjectAtIndex:indexPath.row];
+        Company* selectedCompany = [self.dao.companies objectAtIndex:indexPath.row];
+    //[self.dao.companies removeObjectAtIndex:indexPath.row];
+       [self.dao deleteCompanyFromDB:selectedCompany];
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }

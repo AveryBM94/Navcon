@@ -6,6 +6,8 @@
 //  Copyright © 2017 Aditya Narayan. All rights reserved.
 //
 
+
+
 #import <UIKit/UIKit.h>
 #import "Company.h"
 #import "Product.h"
@@ -19,6 +21,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *productURLTextField;
 @property (retain, nonatomic) IBOutlet UITextField *companyLogoTextField;
 @property (retain, nonatomic) IBOutlet UITextField *productImageTextField;
+@property(nonatomic,retain) Company *currentCompany;
 
 
 - (void)greyCompanyText;
