@@ -45,7 +45,8 @@
 
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     //line below adds an edit button to the nav con
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEditMode)];
+//    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEditMode)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonScreen)];
     
@@ -119,10 +120,10 @@
 }
 
 -(void)toggleEditMode {
-    if (self.editing) {
+    if (self.tableView.editing) {
         [super setEditing:NO animated:NO];
         [self.tableView setEditing:NO animated:YES];
-        self.navigationItem.rightBarButtonItem.title = @"done";
+        self.navigationItem.rightBarButtonItem.title = @"Edit";
         [self.tableView reloadData];
         self.navigationItem.leftBarButtonItem.tintColor = [UIColor clearColor];
         self.navigationItem.leftBarButtonItem.enabled = NO;
@@ -203,15 +204,19 @@
 {
     Company *companyToMove = [self.dao.companies objectAtIndex:fromIndexPath.row];
     // NSString *companyPhotoToMove = [self.trueImageList objectAtIndex:fromIndexPath.row];
-    NSLog(@"happened with %@", companyToMove);
+    NSLog(@"happened with %@", companyToMove.companyName);
+    [companyToMove retain];
     [self.dao.companies removeObjectAtIndex:fromIndexPath.row];
     [self.dao.companies insertObject:companyToMove atIndex:toIndexPath.row];
+    
+    
     
     //[self.trueImageList removeObjectAtIndex:fromIndexPath.row];
     //[self.trueImageList insertObject:companyPhotoToMove atIndex:toIndexPath.row];
     
     [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
     [self.tableView endUpdates];
+    [companyToMove release];
 }
 
 

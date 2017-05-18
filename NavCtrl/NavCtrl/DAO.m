@@ -30,8 +30,8 @@
         NavControllerAppDelegate *appDelegate = (NavControllerAppDelegate*)[UIApplication sharedApplication].delegate;
         self.context = appDelegate.persistentContainer.viewContext;
         self.context.undoManager = [[NSUndoManager alloc] init];
-         self.managedCompanies = [[NSMutableArray alloc]init];
         
+         self.managedCompanies = [[NSMutableArray alloc]init];
         BOOL appHasRan = [[NSUserDefaults standardUserDefaults]boolForKey:@"appHasRan"];
         if (appHasRan == NO) {
             [self createStockCompanies];
@@ -48,12 +48,15 @@
 }
 
 -(void)fetchFromCoreData {
-    self.companies = [[NSMutableArray alloc] init];
+      self.companies = [[NSMutableArray alloc] init];
+   
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"ManagedCompany"];
     NSArray *results = [self.context executeFetchRequest:request error:nil];
     self.managedCompanies = [results mutableCopy];
+        NSLog(@"%lu", (unsigned long)results.count);
+    
     //self.managedCompanies = [results mutableCopy];
-    NSLog(@"%lu", (unsigned long)results.count);
+
 //    if (results.count == 0) {
 //        [self createStockCompanies];
         for (ManagedCompany *companyResult in results) {
@@ -75,10 +78,18 @@
                 
                 [thisCompany.products addObject:thisProduct];
                 NSLog(@"%@",thisProduct);
+                [thisProduct release];
+
                 
             }
             [self.companies addObject:thisCompany];
-        }   
+
+         //
+            [thisCompany release];
+
+        }
+    
+   // [results release];
 //    }
     //add company to self.companies array
    // [self saveCoreDataStuff];
@@ -89,6 +100,7 @@
 
 -(void)createStockCompanies {
     
+    
    
     
     Product *iphone = [[Product alloc]initWithProductNames:@"iphone" productPhotos:@"iPhone.jpeg" url:@"https://www.google.com/"];
@@ -96,12 +108,21 @@
     Product *iPodTouch = [[Product alloc]initWithProductNames:@"iPod Touch" productPhotos:@"iPodTouch.png" url:@"http://www.apple.com/iphone/"];
     
     Product *iPadPro = [[Product alloc]initWithProductNames:@"iPad Pro" productPhotos:@"iPadPro.jpeg" url:@"http://www.apple.com/iphone/"];
+
+    
     
     NSMutableArray *appleProducts = [[NSMutableArray alloc]initWithObjects:iphone, iPodTouch, iPadPro, nil];
+    
+    [iphone release];
+    [iPodTouch release];
+    [iPadPro release];
+    
     ///////////
     //ADD TICKER
     ////////////
     Company *apple = [[Company alloc]initWithCompanyName:@"Apple mobile devices" logos:@"navConApple.jpeg" products:appleProducts ticker:@"AAPL"];
+    
+    [appleProducts release];
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -113,8 +134,14 @@
     
     NSMutableArray *samsungProducts = [[NSMutableArray alloc]initWithObjects:galaxyS7, galaxyNote, galaxyTab, nil];
     
+    [galaxyS7 release];
+    [galaxyNote release];
+    [galaxyTab release];
+    
+    
     Company *samsung = [[Company alloc]initWithCompanyName:@"Samsung mobile devices" logos:@"navConSamsung.png" products:samsungProducts ticker:@"SSNNF"];
     
+    [samsungProducts release];
     
     
     Product *passport = [[Product alloc]initWithProductNames:@"Passport" productPhotos:@"iPhone.jpeg" url:@"http://www.apple.com/iphone/"];
@@ -125,8 +152,13 @@
     
     NSMutableArray *blackBerryProducts = [[NSMutableArray alloc]initWithObjects:passport, leap, priv, nil];
     
+    [passport release];
+    [leap release];
+    [priv release];
+    
     Company *blackBerry = [[Company alloc]initWithCompanyName:@"Black Berry mobile devices" logos:@"navConBlackBerry.jpeg" products:blackBerryProducts ticker:@"BBRY"];
     
+    [blackBerryProducts release];
     
     
     Product *motoZPlay = [[Product alloc]initWithProductNames:@"Moto Z Play" productPhotos:@"MotoZPlay.jpeg" url:@"http://www.apple.com/iphone/"];
@@ -137,9 +169,20 @@
     
     NSMutableArray *motoProducts = [[NSMutableArray alloc]initWithObjects:motoZPlay, motoG4Plus, motoZForceDroid, nil];
     
+    [motoZPlay release];
+    [motoG4Plus release];
+    [motoZForceDroid release];
+    
     Company *moto = [[Company alloc]initWithCompanyName:@"Motorola Moto mobile devices" logos:@"navConMotorola.png" products:motoProducts ticker:@"MSI"];
+    [motoProducts release];
+    
     
     self.companies = [[NSMutableArray alloc]initWithObjects:apple, samsung, blackBerry, moto, nil];
+    
+    [apple release];
+    [samsung release];
+    [blackBerry release];
+    [moto release];
     
     
     for (Company *company in self.companies) {
@@ -154,7 +197,7 @@
             mP.photo = product.productPhotos;
             mP.url = product.urlString;
             mP.company = mC;
-            [mC.products setByAddingObject:mP];
+            [mC addProductsObject:mP];
         }
         [self.managedCompanies addObject:mC];
     }
@@ -261,13 +304,13 @@
     
     
     }
-    //[self saveCoreDataStuff];
+    [self saveCoreDataStuff];
 
 }
 
 
 -(NSString*)generateStockSymbolUrl {
-    self.tickerData = [[NSMutableArray alloc] init];
+    _tickerData = [[NSMutableArray alloc] init];
     
     for (Company *comp in self.companies) {
         [self.tickerData addObject:comp.ticker];
@@ -292,8 +335,8 @@
     NSURL *url = [NSURL URLWithString:urlEndpoint];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSURLSession *session = [[NSURLSession sessionWithConfiguration:config] autorelease];
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] initWithURL:url] autorelease];
     request.HTTPMethod = @"GET";
     
     [[session dataTaskWithRequest:request completionHandler:^(NSData * data, NSURLResponse *response, NSError *error)//the code within the following brackets will run after the code above regaurdless of weather or not the code above works or not.
@@ -303,7 +346,18 @@
           NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
           
           
-          NSArray *resultsArray = [dataString componentsSeparatedByString:@"\n"];
+          NSMutableArray *resultsArray = [[dataString componentsSeparatedByString:@"\n"] mutableCopy];
+          [resultsArray removeLastObject];
+          [dataString release];
+          
+          
+          if(resultsArray.count!=self.companies.count){
+              NSLog(@"Stock Array count [%lu] & Companies count [%lu] Not Matching", (unsigned long)resultsArray.count, (unsigned long)self.companies.count);
+              [resultsArray release];
+              return;
+          }
+          
+          
           
           //NSLog(@"RESULTS String: %@", dataString);
           //NSLog(@"RESULTS Array: %@", resultsArray);
@@ -315,10 +369,17 @@
               NSLog(@"comp.TickerPrice: %@", comp.tickerPrice);
           }
           
+          
+           [resultsArray release];
+          
+          
+          
           dispatch_async(dispatch_get_main_queue(), ^{
               //
               [self.delegate reloadTableView];
           });
+          
+          
           
       }]resume];
 }
@@ -337,7 +398,15 @@
 }
 
 
-
+- (void)dealloc
+{
+    
+    [_context release];
+    [_managedCompanies release];
+    [_companies release];
+    [_delegate release];
+    [super dealloc];
+}
 
 
 

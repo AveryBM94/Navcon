@@ -34,4 +34,13 @@
 }
 
 
+- (void)dealloc {
+    
+    [_companyName release];
+    [_ticker release];
+    [_logos release];
+    [_products release];
+    [super dealloc];
+}
+
 @end
