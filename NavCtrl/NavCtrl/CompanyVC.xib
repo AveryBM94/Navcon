@@ -35,7 +35,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-N3-SKA">
                     <rect key="frame" x="187.5" y="637" width="187.5" height="30"/>
                     <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Redo"/>
+                    <state key="normal" title="Redo">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="redoButton:" destination="-1" eventType="touchUpInside" id="6pZ-oK-OOc"/>
                     </connections>
@@ -43,7 +45,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCO-bK-Xck">
                     <rect key="frame" x="0.0" y="637" width="187.5" height="30"/>
                     <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Undo"/>
+                    <state key="normal" title="Undo">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="undoButton:" destination="-1" eventType="touchUpInside" id="2ab-MO-aCe"/>
                     </connections>
