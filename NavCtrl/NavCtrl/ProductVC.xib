@@ -6,12 +6,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductVC">
             <connections>
+                <outlet property="addProductLabel" destination="QDr-A4-MAS" id="3tJ-x4-lXb"/>
+                <outlet property="companyInfoLabel" destination="gkX-3e-EqG" id="FTD-w0-MhO"/>
+                <outlet property="companyLogoView" destination="aUc-fh-tXa" id="E6S-is-6aN"/>
+                <outlet property="hideOrNot" destination="VXo-VZ-1Ow" id="aWE-yq-m0p"/>
+                <outlet property="secondAddButton" destination="wce-So-pq0" id="4h0-FH-f7N"/>
                 <outlet property="tableView" destination="gNa-zb-Lno" id="F2M-E8-BMo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,19 +37,74 @@
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdn-rW-Osh">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aUc-fh-tXa">
+                            <rect key="frame" x="117" y="93" width="141" height="117"/>
+                            <color key="backgroundColor" cyan="0.0" magenta="1" yellow="0.66609700520000004" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="aUc-fh-tXa" secondAttribute="height" multiplier="47:39" id="sqm-MW-siz"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkX-3e-EqG">
+                            <rect key="frame" x="36" y="225" width="303" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="aUc-fh-tXa" secondAttribute="trailing" constant="117" id="Bd5-hX-GDs"/>
+                        <constraint firstItem="aUc-fh-tXa" firstAttribute="top" secondItem="Bdn-rW-Osh" secondAttribute="top" constant="93" id="ED5-iu-LQ7"/>
+                        <constraint firstItem="gkX-3e-EqG" firstAttribute="top" secondItem="aUc-fh-tXa" secondAttribute="bottom" constant="15" id="K24-cC-EcG"/>
+                        <constraint firstAttribute="bottom" secondItem="gkX-3e-EqG" secondAttribute="bottom" constant="21.5" id="PRP-Ye-YqQ"/>
+                        <constraint firstItem="gkX-3e-EqG" firstAttribute="top" secondItem="aUc-fh-tXa" secondAttribute="bottom" constant="15" id="bqu-eY-bhS"/>
+                        <constraint firstAttribute="trailing" secondItem="gkX-3e-EqG" secondAttribute="trailing" constant="36" id="ftK-R7-gD9"/>
+                        <constraint firstItem="aUc-fh-tXa" firstAttribute="leading" secondItem="Bdn-rW-Osh" secondAttribute="leading" constant="117" id="gBb-By-hlL"/>
+                        <constraint firstItem="gkX-3e-EqG" firstAttribute="leading" secondItem="Bdn-rW-Osh" secondAttribute="leading" constant="36" id="hwR-iL-obf"/>
+                    </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VXo-VZ-1Ow">
+                    <rect key="frame" x="0.0" y="267" width="375" height="400"/>
+                    <color key="backgroundColor" cyan="0.0" magenta="1" yellow="0.66609700520000004" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a few of this company's products to track." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDr-A4-MAS">
+                    <rect key="frame" x="91" y="322" width="193" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wce-So-pq0">
+                    <rect key="frame" x="97" y="413" width="181" height="109"/>
+                    <state key="normal" title="+Add Product">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="secondAddButton:" destination="-1" eventType="touchUpInside" id="olm-e4-EYD"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gNa-zb-Lno" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="1XU-WI-AZd"/>
+                <constraint firstAttribute="bottom" secondItem="wce-So-pq0" secondAttribute="bottom" constant="145" id="2xt-dg-p52"/>
+                <constraint firstItem="VXo-VZ-1Ow" firstAttribute="top" secondItem="Bdn-rW-Osh" secondAttribute="bottom" id="4w5-Nb-0tf"/>
                 <constraint firstAttribute="trailing" secondItem="gNa-zb-Lno" secondAttribute="trailing" id="60x-h6-FvE"/>
+                <constraint firstItem="VXo-VZ-1Ow" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C2H-xO-3It"/>
                 <constraint firstAttribute="bottom" secondItem="gNa-zb-Lno" secondAttribute="bottom" id="IC3-hj-k0o"/>
                 <constraint firstItem="gNa-zb-Lno" firstAttribute="top" secondItem="Bdn-rW-Osh" secondAttribute="bottom" id="IG6-iU-GcP"/>
                 <constraint firstItem="gNa-zb-Lno" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Iu8-tu-oAb"/>
+                <constraint firstAttribute="trailing" secondItem="QDr-A4-MAS" secondAttribute="trailing" constant="91" id="JD2-Pb-hAa"/>
+                <constraint firstAttribute="trailing" secondItem="VXo-VZ-1Ow" secondAttribute="trailing" id="MPP-Ls-Ctf"/>
+                <constraint firstItem="QDr-A4-MAS" firstAttribute="top" secondItem="Bdn-rW-Osh" secondAttribute="bottom" constant="55" id="Qa2-0d-cp6"/>
+                <constraint firstAttribute="trailing" secondItem="wce-So-pq0" secondAttribute="trailing" constant="97" id="Vaj-5A-54O"/>
                 <constraint firstItem="Bdn-rW-Osh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="W3u-F9-Czp"/>
+                <constraint firstItem="wce-So-pq0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="97" id="a5h-KM-5lV"/>
                 <constraint firstAttribute="trailing" secondItem="Bdn-rW-Osh" secondAttribute="trailing" id="baI-eP-Xvn"/>
                 <constraint firstItem="Bdn-rW-Osh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dUQ-V1-SLs"/>
+                <constraint firstItem="QDr-A4-MAS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="91" id="jKC-aH-mkP"/>
+                <constraint firstAttribute="bottom" secondItem="VXo-VZ-1Ow" secondAttribute="bottom" id="mxh-aM-PqQ"/>
+                <constraint firstItem="wce-So-pq0" firstAttribute="top" secondItem="QDr-A4-MAS" secondAttribute="bottom" constant="30" id="yTz-k1-RSA"/>
             </constraints>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>

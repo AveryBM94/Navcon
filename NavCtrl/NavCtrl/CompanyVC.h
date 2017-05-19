@@ -15,13 +15,16 @@
 @interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource, reloadDelegate>
 
 @property (retain, nonatomic) DAO *dao;
+@property (retain, nonatomic) IBOutlet UIImageView *noDataInArrayView;
+@property (retain, nonatomic) IBOutlet UIButton *secondAddButton;
+@property (retain, nonatomic) IBOutlet UILabel *companyAddLabel;
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 //@property (nonatomic,retain) NSMutableArray *companies;
 @property (nonatomic, retain) NSArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
 @property (nonatomic, retain) AddButtonDataViewController *addButtonVC;
-@property (retain, nonatomic) EditButtonViewController *editButtonVC;
+@property (nonatomic, retain) EditButtonViewController *editButtonVC;
 @property (nonatomic, retain) NSMutableArray *trueCompanyList;
 @property (nonatomic, retain) NSMutableArray *trueImageList;
 @property (nonatomic, retain) NSMutableArray *appleProds;
@@ -39,4 +42,5 @@
 
 -(void)addButtonScreen;
 -(void)saveButton;
+-(void)hideOrShow;
 @end

@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self hideOrShow];
     //how to init
    // self.addButtonVC = [[AddButtonDataViewController alloc] init];
     //create ipad
@@ -74,7 +76,8 @@
     self.dao.isCompanyEditMode = NO;
     self.dao.isProductAddMode = NO;
     self.dao.isProductEditMode = NO;
-    
+    [self hideOrShow];
+
     [self.dao httpGetRequest];
     
     [self.tableView reloadData];
@@ -140,6 +143,10 @@
         [self.tableView reloadData];
     }
 }
+- (IBAction)secondAddButton:(UIButton *)sender {
+    
+    [self addButtonScreen];
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -191,6 +198,8 @@
        [self.dao deleteCompanyFromDB:selectedCompany];
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self hideOrShow];
+
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -277,8 +286,33 @@
 }
 */
 
+
+
+
+-(void)hideOrShow{
+    
+    if (self.dao.companies.count == 0) {
+        [self.secondAddButton setHidden:false];
+        [self.noDataInArrayView setHidden:false];
+        [self.companyAddLabel setHidden:false];
+
+    }
+    else{
+        [self.noDataInArrayView setHidden:true];
+        [self.secondAddButton setHidden:true];
+        [self.companyAddLabel setHidden:true];
+
+
+        
+    }
+}
+
+
 - (void)dealloc {
     [_tableView release];
+    [_noDataInArrayView release];
+    [_secondAddButton release];
+    [_companyAddLabel release];
     [super dealloc];
 }
 @end

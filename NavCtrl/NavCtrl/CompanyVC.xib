@@ -6,11 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyVC">
             <connections>
+                <outlet property="companyAddLabel" destination="D6r-1O-tAo" id="HrM-Al-Nxm"/>
+                <outlet property="noDataInArrayView" destination="1fV-UX-GU3" id="Y2h-g7-3qc"/>
+                <outlet property="secondAddButton" destination="B9E-gQ-9Jh" id="cIH-gA-XoU"/>
                 <outlet property="tableView" destination="b9s-ce-C0v" id="jhV-HN-9fx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,30 +32,68 @@
                         <outlet property="delegate" destination="-1" id="rfX-ae-JqV"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-N3-SKA">
-                    <rect key="frame" x="270" y="608" width="36" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-N3-SKA">
+                    <rect key="frame" x="187.5" y="637" width="187.5" height="30"/>
+                    <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Redo"/>
                     <connections>
                         <action selector="redoButton:" destination="-1" eventType="touchUpInside" id="6pZ-oK-OOc"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCO-bK-Xck">
-                    <rect key="frame" x="60" y="608" width="38" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCO-bK-Xck">
+                    <rect key="frame" x="0.0" y="637" width="187.5" height="30"/>
+                    <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Undo"/>
                     <connections>
                         <action selector="undoButton:" destination="-1" eventType="touchUpInside" id="2ab-MO-aCe"/>
                     </connections>
                 </button>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-UX-GU3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cyan="0.0" magenta="1" yellow="0.66609700520000004" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently don't have any companies added. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6r-1O-tAo">
+                    <rect key="frame" x="50.5" y="256" width="274" height="155"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="274" id="1jq-Uk-5o7"/>
+                        <constraint firstAttribute="height" constant="155" id="azg-uC-txH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9E-gQ-9Jh">
+                    <rect key="frame" x="134.5" y="466" width="106" height="30"/>
+                    <state key="normal" title="+Add Company">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="secondAddButton:" destination="-1" eventType="touchUpInside" id="VgJ-3u-Oxt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="1fV-UX-GU3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0gw-Te-iZP"/>
+                <constraint firstItem="B9E-gQ-9Jh" firstAttribute="top" secondItem="D6r-1O-tAo" secondAttribute="bottom" constant="55" id="8YZ-IN-BKL"/>
+                <constraint firstAttribute="bottom" secondItem="IaS-N3-SKA" secondAttribute="bottom" id="Bcb-tc-dtn"/>
+                <constraint firstItem="IaS-N3-SKA" firstAttribute="leading" secondItem="xCO-bK-Xck" secondAttribute="trailing" id="Dc8-xP-shl"/>
+                <constraint firstItem="B9E-gQ-9Jh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JXh-g2-WOR"/>
+                <constraint firstItem="xCO-bK-Xck" firstAttribute="width" secondItem="b9s-ce-C0v" secondAttribute="width" multiplier="0.5" id="Mcz-TX-Xrv"/>
+                <constraint firstItem="D6r-1O-tAo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Rpl-Or-T58"/>
+                <constraint firstAttribute="bottom" secondItem="xCO-bK-Xck" secondAttribute="bottom" id="XbS-US-Fmi"/>
                 <constraint firstItem="b9s-ce-C0v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bEQ-Zw-aaw"/>
+                <constraint firstAttribute="trailing" secondItem="IaS-N3-SKA" secondAttribute="trailing" id="cUC-Nb-dsm"/>
                 <constraint firstAttribute="trailing" secondItem="b9s-ce-C0v" secondAttribute="trailing" id="ebp-qQ-E2j"/>
+                <constraint firstAttribute="trailing" secondItem="1fV-UX-GU3" secondAttribute="trailing" id="fEF-aE-cut"/>
+                <constraint firstItem="D6r-1O-tAo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ivs-fC-ZAS"/>
                 <constraint firstAttribute="bottom" secondItem="b9s-ce-C0v" secondAttribute="bottom" id="l6Y-x6-gSp"/>
+                <constraint firstItem="xCO-bK-Xck" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n6o-Ch-jXc"/>
+                <constraint firstAttribute="bottom" secondItem="1fV-UX-GU3" secondAttribute="bottom" id="pjI-MV-gHF"/>
+                <constraint firstItem="1fV-UX-GU3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q6q-I4-myn"/>
                 <constraint firstItem="b9s-ce-C0v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vPr-cD-R1S"/>
             </constraints>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
     </objects>
 </document>

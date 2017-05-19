@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self hideOrShow];
+
     self.dao = [DAO sharedManager];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
@@ -25,10 +27,14 @@
         // self.navigationItem.rightBarButtonItem = editButton;
     self.tableView.allowsSelectionDuringEditing = TRUE;
 
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [self hideOrShow];
+
+    self.companyLogoView.image = [UIImage imageNamed:self.currentCompany.logos];
+    self.companyInfoLabel.text = [NSString stringWithFormat:@" %@ (%@)",_currentCompany.companyName, _currentCompany.ticker];
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
@@ -95,10 +101,13 @@
     if (editingStyle == UITableViewCellEditingStyleDelete){
         
         Product* selectedProduct = [self.currentCompany.products objectAtIndex:indexPath.row];
+        [selectedProduct retain];
         [self.currentCompany.products removeObjectAtIndex:indexPath.row];
 
         [self.dao deleteProductFromDB:selectedProduct fromCompany:self.currentCompany];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self hideOrShow];
+
     }
     
     
@@ -243,12 +252,36 @@
  
  // Push the view controller.
  }
- 
 
+-(void)hideOrShow{
+    
+    if (self.currentCompany.products.count == 0) {
+        [self.secondAddButton setHidden:false];
+        [self.hideOrNot setHidden:false];
+        [self.addProductLabel setHidden:false];
+    }
+    else{
+        [self.hideOrNot setHidden:true];
+        [self.secondAddButton setHidden:true];
+        [self.addProductLabel setHidden:true];
+
+    }
+}
 
 
 - (void)dealloc {
     [_tableView release];
+    [_companyLogoView release];
+    [_companyInfoLabel release];
+    [_hideOrNot release];
+    [_secondAddButton release];
+
+    [_addProductLabel release];
     [super dealloc];
 }
+- (IBAction)secondAddButton:(UIButton *)sender {
+    
+    [self addButtonScreen];
+}
+
 @end
